@@ -26,7 +26,10 @@ class Demo():
                 for i, item in enumerate(data['paragraphs']):
                     key = f'{title}#{i}'
                     self.__pardata[key] = item['context']
-                    self.__qadata[key]  = [(subitem['question'], subitem['answers'][0]['text'])for subitem in item['qas']]
+                    self.__qadata[key] = []
+                    for subitem in item['qas']:
+                        if len(subitem['answers']) > 0:
+                            self.__qadata[key].append((subitem['question'], subitem['answers'][0]['text'],))
 
     def pardata(self):
         """Load paragraph data.

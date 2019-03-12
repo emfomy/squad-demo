@@ -6,7 +6,7 @@
 <html lang="en">
 
   <head>
-    <title>Self Q&A Demo</title>
+    <title>SQuAD Demo</title>
     <meta charset="utf-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -24,8 +24,8 @@
     <link rel="manifest" href="/assets/favicon/site.webmanifest">
     <link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#003459">
     <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
-    <meta name="apple-mobile-web-app-title" content="Self Q&A Demo">
-    <meta name="application-name" content="Self Q&A Demo">
+    <meta name="apple-mobile-web-app-title" content="SQuAD Demo">
+    <meta name="application-name" content="SQuAD Demo">
     <meta name="msapplication-TileColor" content="#2b5797">
     <meta name="msapplication-TileImage" content="/assets/favicon/mstile-144x144.png">
     <meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
@@ -45,7 +45,7 @@
 
       <main id="main" role="main" class="container py-3">
         <header>
-          <h1>Self Q&A Demo</h1>
+          <h1>SQuAD Demo</h1>
         </header>
 
         <hr>
@@ -78,42 +78,42 @@
 
           <div class="col-md-6">
 
-            <div id="answer" class="mb-3">
+            <div id="question" class="mb-3">
 
               <header>
-                <h2>Answer</h2>
+                <h2>Question</h2>
               </header>
 
-              <small class="form-text text-muted">Select an answer:</small>
+              <small class="form-text text-muted">Select an question:</small>
               <div class="mb--1">
-                <template v-for="item in anslist">
-                  <button class="btn btn-sm btn-outline-secondary mb-1" type="submit" :disabled="loading" @click="selectAnswer(item)" v-text="item"></button>${" "}
+                <template v-for="item in qalist">
+                  <button class="btn btn-sm btn-outline-secondary mb-1" type="submit" :disabled="loading" @click="selectQuestion(item[0], item[1])" v-text="item[0]"></button>${" "}
                 </template>
               </div>
 
-              <small class="form-text text-muted">or write your own answer:</small>
+              <small class="form-text text-muted">or write your own question:</small>
               <div class="input-group input-group-sm">
-                <input v-model="anstext" type="text" class="form-control" placeholder="The Answer" :disabled="loading" @keyup.enter="submitAnswer"></input>
+                <input v-model="qustext" type="text" class="form-control" placeholder="The Question" :disabled="loading" @keyup.enter="submitQuestion"></input>
                 <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="submit" :disabled="loading" @click="submitAnswer">Submit</button>
-                  <button class="btn text-light bg-secondary" type="submit" :disabled="loading" @click="clearAnswer">Reset</button>
+                  <button class="btn btn-outline-secondary" type="submit" :disabled="loading" @click="submitQuestion">Submit</button>
+                  <button class="btn text-light bg-secondary" type="submit" :disabled="loading" @click="clearQuestion">Reset</button>
                 </div>
               </div>
 
             </div>
 
-            <div id="question" class="mb-3">
+            <div id="answer" class="mb-3">
 
               <header>
                 <div v-if="loading" class="float-right my-2"><i class="fas fa-spinner fa-spin"></i> Loading ...</div>
-                <h2>Question</h2>
+                <h2>Answer</h2>
               </header>
 
-              <small class="form-text text-muted">Generated question:</small>
-              <div v-text="questext" class="form-control fake-textarea bg-light h-auto" placeholder="The Generated Question"></div>
+              <small class="form-text text-success">Ground truth:</small>
+              <input v-model="anstext" class="form-control bg-light" placeholder="The Ground Truth" disabled></input>
 
-              <small class="form-text text-muted">Ground truth:</small>
-              <div v-text="questext2" class="form-control fake-textarea bg-light h-auto" placeholder="The Ground Truth"></div>
+              <small class="form-text text-warning">Generated answer:</small>
+              <input v-model="restext" class="form-control bg-light" placeholder="The Generated Answer" disabled></input>
 
             </div>
 
@@ -135,7 +135,8 @@
       </footer>
 
     <!-- Scripts -->
-      <script src="/assets/vendor/vue/js/vue.min.js"></script>
+      <script src="/assets/vendor/vue/js/vue.js"></script>
+      <!-- <script src="/assets/vendor/vue/js/vue.min.js"></script> -->
       <script src="/assets/vendor/vue-resource/js/vue-resource.min.js"></script>
       <script src="/assets/vendor/babel-polyfill/js/polyfill.min.js"></script>
       <script src="/assets/vendor/bootstrap-vue/js/bootstrap-vue.min.js"></script>

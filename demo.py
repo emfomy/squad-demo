@@ -3,7 +3,7 @@
 
 
 __author__    = 'Mu Yang <emfomy@gmail.com>'
-__copyright__ = 'Copyright 2018'
+__copyright__ = 'Copyright 2019'
 
 import argparse
 import sys
@@ -19,11 +19,11 @@ class Demo():
     def __init__(self, file):
         """Default constructor."""
         self.__pardata = {}
-        self.__ansdata = {}
+        self.__qadata  = {}
         with open(file) as fin:
             for key, item in json.load(fin).items():
                 self.__pardata[key] = item['paragraph']
-                self.__ansdata[key] = item['answer']
+                self.__qadata[key]  = item['qa']
 
     def pardata(self):
         """Load paragraph data.
@@ -36,44 +36,31 @@ class Demo():
 
         return self.__pardata
 
-    def ansdata(self):
+    def qadata(self):
         """Load data.
 
         Returns:
-            dict: the answers.
+            dict: the questions and answers.
                 * Key   (str):  topic.
-                * Value (list): list of answers.
+                * Value (list): list of (question, answer)s.
         """
 
-        return self.__ansdata
+        return self.__qadata
 
-    def predict(self, p_str, a_str):
-        """Get predicted question.
+    def predict(self, p_str, q_str):
+        """Get predicted answer.
 
         Args:
             p_str (str): paragraph.
-            a_str (str): answer.
+            q_str (str): questions.
 
         Returns:
-            str: predicted question.
+            str: predicted answer.
         """
         time.sleep(1)
-        q_str = f'GUESS [{a_str[:64]}] {p_str[:256]}'
-        return q_str
-
-    def truth(self, p_str, a_str):
-        """Get ground-truth question.
-
-        Args:
-            p_str (str): paragraph.
-            a_str (str): answer.
-
-        Returns:
-            str: ground-truth question.
-        """
-        time.sleep(1)
-        q_str2 = f'TRUTH [{a_str[-64:]}] {p_str[-256:]}'
-        return q_str2
+        # a_str = f'GUESS [{q_str[:64]}] {p_str[:256]}'
+        a_str = q_str
+        return a_str
 
 
 def main():

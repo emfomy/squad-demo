@@ -43,7 +43,6 @@ body {
 }
 
 .highlight {
-  background-color: #ffc107;
   opacity: 0.5;
   user-select: none !important;
 }

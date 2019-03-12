@@ -3,7 +3,7 @@
 
 
 __author__    = 'Mu Yang <emfomy@gmail.com>'
-__copyright__ = 'Copyright 2018'
+__copyright__ = 'Copyright 2019'
 
 from flask import Flask
 from flask import json
@@ -29,7 +29,7 @@ def data_route():
     demo = app.config['demo']
     data = {
         'pardata': demo.pardata(),
-        'ansdata': demo.ansdata()
+        'qadata':  demo.qadata(),
     }
     return 'var _data = ' + json.dumps(data)
 
@@ -42,11 +42,9 @@ def post_route():
         data = request.data.decode()
         print(colored('1;95', data))
         jdata = json.loads(data)
-        qstr  = demo.predict(jdata['paragraph'], jdata['answer'])
-        qstr2 = demo.truth(jdata['paragraph'], jdata['answer'])
-        print(colored('1;96', qstr))
-        print(colored('1;96', qstr2))
-        return jsonify({'question': qstr, 'question2': qstr2})
+        astr  = demo.predict(jdata['paragraph'], jdata['question'])
+        print(colored('1;96', astr))
+        return jsonify({'result': astr})
     except Exception as e:
         msg = f'{type(e).__name__}: {e}'
         print(colored('1;31', msg))

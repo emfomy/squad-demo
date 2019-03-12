@@ -6,15 +6,16 @@ var app = new Vue({
 
   data: {
     pardata: _data.pardata,
-    ansdata: _data.ansdata,
+    qadata:  _data.qadata,
+
+    qalist: [],
 
     topic: "",
     partext: "",
-    anslist: [],
-    anstext: "",
+    qustext: "",
 
-    questext: "",
-    questext2: "",
+    anstext: "",
+    restext: "",
 
     loading: false
   },
@@ -22,8 +23,8 @@ var app = new Vue({
   watch: {
     topic: function ( val ) {
       this.partext = this.pardata[val] || "";
-      this.anslist = this.ansdata[val] || "";
-      this.clearAnswer();
+      this.qalist  = this.qadata[val]  || "";
+      this.clearQuestion();
     }
   },
 
@@ -31,28 +32,45 @@ var app = new Vue({
 
     partextHighlight() {
       var anstext = escapeRegExp(this.anstext);
-      if ( anstext ) {
-        var re = new RegExp(`(\\b|\\s|^)(${escapeRegExp(this.anstext)})(\\b|\\s|$)`, "giu");
-        var partext_ = this.partext.replace(re, "$1<span class=\"highlight\">$2</span>$3");
+      var restext = escapeRegExp(this.restext);
+      var partext_ = this.partext;
+
+      if ( anstext && anstext == restext ) {
+        var re = new RegExp(`(\\b|\\s|^)(${anstext})(\\b|\\s|$)`, "giu");
+        var partext_ = partext_.replace(re, "$1<span class=\"highlight bg-primary\">$2</span>$3");
       } else {
-        var partext_ = this.partext;
+        if ( anstext ) {
+          var re = new RegExp(`(\\b|\\s|^)(${anstext})(\\b|\\s|$)`, "giu");
+          var partext_ = partext_.replace(re, "$1<span class=\"highlight bg-success\">$2</span>$3");
+        }
+
+        if ( restext ) {
+          var re = new RegExp(`(\\b|\\s|^)(${restext})(\\b|\\s|$)`, "giu");
+          var partext_ = partext_.replace(re, "$1<span class=\"highlight bg-warning\">$2</span>$3");
+        }
       }
+
       return partext_ + '\n.';
     },
 
-    selectAnswer(text) {
-      this.anstext = text;
-      this.submitAnswer();
+    selectQuestion(qtext, atext) {
+      this.qustext = qtext;
+      this.anstext = atext;
+      this.submitQuestionCore();
     },
 
-    submitAnswer() {
+    submitQuestion() {
+      this.anstext = "";
+      this.submitQuestionCore();
+    },
+
+    submitQuestionCore() {
       this.loading = true;
-      this.questext = "";
-      this.questext2 = "";
+      this.restext = "";
 
       const data = {
         paragraph: this.partext,
-        answer:    this.anstext
+        question:  this.qustext
       };
 
       this.$http.post("/post", data, {
@@ -60,8 +78,7 @@ var app = new Vue({
       }).then(
         res => {
           this.loading = false;
-          this.questext = res.body.question;
-          this.questext2 = res.body.question2;
+          this.restext = res.body.result;
         },
         res => {
           this.loading = false;
@@ -70,10 +87,14 @@ var app = new Vue({
       );
     },
 
+    clearQuestion() {
+      this.qustext = "";
+      this.clearAnswer();
+    },
+
     clearAnswer() {
       this.anstext = "";
-      this.questext = "";
-      this.questext2 = "";
+      this.restext = "";
     }
 
   }

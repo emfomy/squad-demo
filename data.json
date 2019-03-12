@@ -1,34 +1,150 @@
 {
 	"Topic 0": {
 		"paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus feugiat in ante metus. Faucibus pulvinar elementum integer enim neque volutpat ac. Lorem ipsum dolor sit amet consectetur adipiscing elit. Mi sit amet mauris commodo quis imperdiet massa tincidunt. Praesent elementum facilisis leo vel fringilla est ullamcorper eget nulla. Tellus rutrum tellus pellentesque eu tincidunt. Nec feugiat in fermentum posuere urna nec tincidunt. Viverra accumsan in nisl nisi scelerisque eu ultrices. Odio morbi quis commodo odio aenean sed adipiscing diam donec. Quam quisque id diam vel quam elementum. Augue interdum velit euismod in pellentesque. Interdum varius sit amet mattis vulputate enim nulla aliquet porttitor. Proin sed libero enim sed. Eu sem integer vitae justo eget.",
-		"answer": ["Lorem",  "Risus", "Faucibus", "Lorem", "Mi", "Praesent", "Tellus", "Nec", "Viverra", "Odio", "Quam", "Augue", "Interdum", "Proin", "Eu"]
+		"qa": [
+			["Lorem", "Lorem"],
+			["Risus", "Risus"],
+			["Faucibus", "Faucibus"],
+			["Lorem", "Lorem"],
+			["Mi", "Mi"],
+			["Praesent", "Praesent"],
+			["Tellus", "Tellus"],
+			["Nec", "Nec"],
+			["Viverra", "Viverra"],
+			["Odio", "Odio"],
+			["Quam", "Quam"],
+			["Augue", "Augue"],
+			["Interdum", "Interdum"],
+			["Proin", "Proin"],
+			["Eu", "Eu"]
+		]
 	},
 	"Topic 1": {
 		"paragraph": "Ut tristique et egestas quis. Amet luctus venenatis lectus magna. Elit duis tristique sollicitudin nibh sit amet commodo nulla. A erat nam at lectus urna duis convallis convallis tellus. Tristique et egestas quis ipsum suspendisse. Aliquam nulla facilisi cras fermentum odio eu. Sagittis purus sit amet volutpat consequat mauris. Imperdiet massa tincidunt nunc pulvinar sapien et ligula ullamcorper. Phasellus vestibulum lorem sed risus ultricies tristique nulla aliquet. Maecenas accumsan lacus vel facilisis volutpat est. Pharetra sit amet aliquam id diam.",
-		"answer": ["Ut", "Amet", "Elit", "A", "Tristique", "Aliquam", "Sagittis", "Imperdiet", "Phasellus", "Maecenas", "Pharetra"]
+		"qa": [
+			["Ut", "Ut"],
+			["Amet", "Amet"],
+			["Elit", "Elit"],
+			["A", "A"],
+			["Tristique", "Tristique"],
+			["Aliquam", "Aliquam"],
+			["Sagittis", "Sagittis"],
+			["Imperdiet", "Imperdiet"],
+			["Phasellus", "Phasellus"],
+			["Maecenas", "Maecenas"],
+			["Pharetra", "Pharetra"]
+		]
 	},
 	"Topic 2": {
 		"paragraph": "Sed viverra tellus in hac habitasse. Non diam phasellus vestibulum lorem sed risus ultricies tristique nulla. Donec massa sapien faucibus et. Est placerat in egestas erat imperdiet sed euismod nisi. Purus gravida quis blandit turpis. Nunc non blandit massa enim nec dui nunc. A erat nam at lectus urna duis convallis. Pharetra magna ac placerat vestibulum. Arcu non sodales neque sodales. Feugiat in fermentum posuere urna. Ut consequat semper viverra nam libero. Morbi tincidunt augue interdum velit euismod in pellentesque massa. Vitae aliquet nec ullamcorper sit amet. Lacus sed viverra tellus in.",
-		"answer": ["Sed", "Non", "Donec", "Est", "Purus", "Nunc", "A", "Pharetra", "Arcu", "Feugiat", "Ut", "Morbi", "Vitae", "Lacus"]
+		"qa": [
+			["Sed", "Sed"],
+			["Non", "Non"],
+			["Donec", "Donec"],
+			["Est", "Est"],
+			["Purus", "Purus"],
+			["Nunc", "Nunc"],
+			["A", "A"],
+			["Pharetra", "Pharetra"],
+			["Arcu", "Arcu"],
+			["Feugiat", "Feugiat"],
+			["Ut", "Ut"],
+			["Morbi", "Morbi"],
+			["Vitae", "Vitae"],
+			["Lacus", "Lacus"]
+		]
 	},
 	"Topic 3": {
 		"paragraph": "Posuere sollicitudin aliquam ultrices sagittis orci. Scelerisque eu ultrices vitae auctor eu augue. Tristique sollicitudin nibh sit amet commodo nulla facilisi nullam vehicula. Donec adipiscing tristique risus nec feugiat in. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum. In nibh mauris cursus mattis molestie a iaculis at. Condimentum lacinia quis vel eros donec. Cras ornare arcu dui vivamus arcu felis bibendum. Diam donec adipiscing tristique risus nec feugiat in fermentum. Auctor neque vitae tempus quam pellentesque nec nam aliquam sem. Nec sagittis aliquam malesuada bibendum arcu vitae elementum curabitur vitae.",
-		"answer": ["Posuere", "Scelerisque", "Tristique", "Donec", "Tellus", "In", "Condimentum", "Cras", "Diam", "Auctor", "Nec"]
+		"qa": [
+			["Posuere", "Posuere"],
+			["Scelerisque", "Scelerisque"],
+			["Tristique", "Tristique"],
+			["Donec", "Donec"],
+			["Tellus", "Tellus"],
+			["In", "In"],
+			["Condimentum", "Condimentum"],
+			["Cras", "Cras"],
+			["Diam", "Diam"],
+			["Auctor", "Auctor"],
+			["Nec", "Nec"]
+		]
 	},
 	"Topic 4": {
 		"paragraph": "Semper viverra nam libero justo laoreet sit amet cursus. Eget lorem dolor sed viverra. Eu non diam phasellus vestibulum lorem sed. Tincidunt vitae semper quis lectus. Enim diam vulputate ut pharetra sit amet aliquam. Lacinia quis vel eros donec ac odio tempor orci dapibus. Proin sagittis nisl rhoncus mattis rhoncus urna neque. In nisl nisi scelerisque eu. Accumsan lacus vel facilisis volutpat est. Egestas pretium aenean pharetra magna ac placerat.",
-		"answer": ["Semper", "Eget", "Eu", "Tincidunt", "Enim", "Lacinia", "Proin", "In", "Accumsan", "Egestas"]
+		"qa": [
+			["Semper", "Semper"],
+			["Eget", "Eget"],
+			["Eu", "Eu"],
+			["Tincidunt", "Tincidunt"],
+			["Enim", "Enim"],
+			["Lacinia", "Lacinia"],
+			["Proin", "Proin"],
+			["In", "In"],
+			["Accumsan", "Accumsan"],
+			["Egestas", "Egestas"]
+		]
 	},
 	"Topic 5": {
 		"paragraph": "Nisl tincidunt eget nullam non nisi. Dignissim suspendisse in est ante. Risus sed vulputate odio ut. Convallis posuere morbi leo urna molestie at elementum. Blandit aliquam etiam erat velit scelerisque in dictum. Amet cursus sit amet dictum sit. Ut pharetra sit amet aliquam id diam. Consectetur libero id faucibus nisl. Et ligula ullamcorper malesuada proin. Proin sagittis nisl rhoncus mattis rhoncus urna neque viverra. Tempus quam pellentesque nec nam aliquam sem et. Feugiat vivamus at augue eget arcu dictum varius duis at. Arcu ac tortor dignissim convallis aenean et tortor. Cursus in hac habitasse platea dictumst. Imperdiet proin fermentum leo vel orci porta non pulvinar. Neque aliquam vestibulum morbi blandit.",
-		"answer": ["Nisl", "Dignissim", "Risus", "Convallis", "Blandit", "Amet", "Ut", "Consectetur", "Et", "Proin", "Tempus", "Feugiat", "Arcu", "Cursus", "Imperdiet", "Neque"]
+		"qa": [
+			["Nisl", "Nisl"],
+			["Dignissim", "Dignissim"],
+			["Risus", "Risus"],
+			["Convallis", "Convallis"],
+			["Blandit", "Blandit"],
+			["Amet", "Amet"],
+			["Ut", "Ut"],
+			["Consectetur", "Consectetur"],
+			["Et", "Et"],
+			["Proin", "Proin"],
+			["Tempus", "Tempus"],
+			["Feugiat", "Feugiat"],
+			["Arcu", "Arcu"],
+			["Cursus", "Cursus"],
+			["Imperdiet", "Imperdiet"],
+			["Neque", "Neque"]
+		]
 	},
 	"Topic 6": {
 		"paragraph": "Quam adipiscing vitae proin sagittis nisl. Purus sit amet luctus venenatis lectus. Mattis aliquam faucibus purus in massa tempor nec feugiat nisl. Et tortor consequat id porta nibh venenatis cras sed. Scelerisque varius morbi enim nunc faucibus a pellentesque sit. Posuere urna nec tincidunt praesent semper feugiat. Nec nam aliquam sem et tortor consequat id porta nibh. Mus mauris vitae ultricies leo integer malesuada. Adipiscing tristique risus nec feugiat in fermentum posuere. Ut porttitor leo a diam sollicitudin tempor. Molestie a iaculis at erat pellentesque. Et pharetra pharetra massa massa ultricies mi.",
-		"answer": ["Quam", "Purus", "Mattis", "Et", "Scelerisque", "Posuere", "Nec", "Mus", "Adipiscing", "Ut", "Molestie", "Et"]
+		"qa": [
+			["Quam", "Quam"],
+			["Purus", "Purus"],
+			["Mattis", "Mattis"],
+			["Et", "Et"],
+			["Scelerisque", "Scelerisque"],
+			["Posuere", "Posuere"],
+			["Nec", "Nec"],
+			["Mus", "Mus"],
+			["Adipiscing", "Adipiscing"],
+			["Ut", "Ut"],
+			["Molestie", "Molestie"],
+			["Et", "Et"]
+		]
 	},
 	"Topic 7": {
 		"paragraph": "Libero id faucibus nisl tincidunt. Turpis egestas sed tempus urna et pharetra pharetra massa. Eros in cursus turpis massa tincidunt dui ut ornare. Risus nullam eget felis eget nunc. Risus nullam eget felis eget nunc lobortis mattis aliquam. Fermentum odio eu feugiat pretium. Eu consequat ac felis donec et odio pellentesque diam volutpat. Et netus et malesuada fames ac turpis egestas sed. Viverra orci sagittis eu volutpat odio. Euismod in pellentesque massa placerat duis ultricies lacus sed. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc. Nec dui nunc mattis enim ut tellus. Ipsum dolor sit amet consectetur adipiscing elit. Pharetra sit amet aliquam id diam. Ipsum nunc aliquet bibendum enim facilisis gravida neque convallis a. Posuere morbi leo urna molestie at elementum eu. Sem nulla pharetra diam sit. Amet tellus cras adipiscing enim eu turpis egestas. Senectus et netus et malesuada fames ac turpis.",
-		"answer": ["Libero", "Turpis", "Eros", "Risus", "Risus", "Fermentum", "Eu", "Et", "Viverra", "Euismod", "Aliquam", "Nec", "Ipsum", "Pharetra", "Ipsum", "Posuere", "Sem", "Amet", "Senectus"]
+		"qa": [
+			["Libero", "Libero"],
+			["Turpis", "Turpis"],
+			["Eros", "Eros"],
+			["Risus", "Risus"],
+			["Risus", "Risus"],
+			["Fermentum", "Fermentum"],
+			["Eu", "Eu"],
+			["Et", "Et"],
+			["Viverra", "Viverra"],
+			["Euismod", "Euismod"],
+			["Aliquam", "Aliquam"],
+			["Nec", "Nec"],
+			["Ipsum", "Ipsum"],
+			["Pharetra", "Pharetra"],
+			["Ipsum", "Ipsum"],
+			["Posuere", "Posuere"],
+			["Sem", "Sem"],
+			["Amet", "Amet"],
+			["Senectus", "Senectus"]
+		]
 	}
 }

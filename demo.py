@@ -21,9 +21,12 @@ class Demo():
         self.__pardata = {}
         self.__qadata  = {}
         with open(file) as fin:
-            for key, item in json.load(fin).items():
-                self.__pardata[key] = item['paragraph']
-                self.__qadata[key]  = item['qa']
+            for data in json.load(fin)['data']:
+                title = data['title']
+                for i, item in enumerate(data['paragraphs']):
+                    key = f'{title}#{i}'
+                    self.__pardata[key] = item['context']
+                    self.__qadata[key]  = [(subitem['question'], subitem['answers'][0]['text'])for subitem in item['qas']]
 
     def pardata(self):
         """Load paragraph data.
@@ -58,9 +61,7 @@ class Demo():
             str: predicted answer.
         """
         time.sleep(1)
-        # a_str = f'GUESS [{q_str[:64]}] {p_str[:256]}'
-        a_str = q_str
-        return a_str
+        return q_str.split('Q: ')[-1]
 
 
 def main():

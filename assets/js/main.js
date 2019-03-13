@@ -30,13 +30,13 @@ var app = new Vue({
 
   methods: {
 
-    partextHighlight(restext, bg) {
+    partextHighlight(restext, style) {
       var restext_ = escapeRegExp(restext);
       var partext_ = this.partext;
 
       if ( restext_ ) {
         var re = new RegExp(`(${restext_})`, "giu");
-        var partext_ = partext_.replace(re, `<span class=\"highlight ${bg}\">$1</span>`);
+        var partext_ = partext_.replace(re, `<span class=\"highlight ${style}\">$1</span>`);
       }
 
       return partext_ + '\n.';

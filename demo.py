@@ -42,6 +42,10 @@ flags.DEFINE_string(
     "data", "data.json",
     "The SQuAD JSON file.")
 
+flags.DEFINE_string(
+    "result", "result.json",
+    "The SQuAD result file.")
+
 FLAGS.__delattr__("do_train")
 FLAGS.__delattr__("do_predict")
 FLAGS.__delattr__("gcp_project")
@@ -54,12 +58,12 @@ FLAGS.__delattr__("train_file")
 class Demo():
     """The demo object"""
 
-    def __init__(self, file):
+    def __init__(self, datafile, resfile):
         """Default constructor."""
 
         self.__pardata = {}
         self.__qadata  = {}
-        with open(file) as fin:
+        with open(datafile) as fin:
             for data in json.load(fin)["data"]:
                 title = data["title"]
                 for i, item in enumerate(data["paragraphs"]):
@@ -69,6 +73,11 @@ class Demo():
                     for subitem in item["qas"]:
                         anslist = [ans["text"] for ans in subitem["answers"]]
                         self.__qadata[key].append((subitem["question"], anslist, subitem["id"],))
+
+        self.__resdata = {}
+        with open(resfile) as fin:
+            for idx, text in json.load(fin).items():
+                self.__resdata[idx] = text
 
         self.bert_core()
 
@@ -105,30 +114,33 @@ class Demo():
         Returns:
             str: predicted answer.
         """
-        if idx == None:
+
+        if idx in self.__resdata:
+            return self.__resdata[idx]
+
+        else:
             idx = str(random.getrandbits(32))
+            input_data = {
+                "data": [
+                    {
+                        "paragraphs": [
+                            {
+                                "context": p_str,
+                                "qas": [
+                                    {"id": idx, "question": q_str}
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
 
-        input_data = {
-            "data": [
-                {
-                    "paragraphs": [
-                        {
-                            "context": p_str,
-                            "qas": [
-                                {"id": idx, "question": q_str}
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
+            with tempfile.NamedTemporaryFile(mode='w') as fout:
+                json.dump(input_data, fout)
+                fout.flush()
+                results = self.bert_predict(fout.name)
 
-        with tempfile.NamedTemporaryFile(mode='w') as fout:
-            json.dump(input_data, fout)
-            fout.flush()
-            results = self.bert_predict(fout.name)
-
-        return results[idx]
+            return results[idx]
 
 
     def bert_core(self):
@@ -272,7 +284,7 @@ def validate_flags_or_throw(bert_config):
 def main(_):
     """The main function."""
 
-    demo = Demo(FLAGS.data)
+    demo = Demo(FLAGS.data, FLAGS.result)
     server.run(demo, FLAGS.host, FLAGS.port, debug=False)
 
 

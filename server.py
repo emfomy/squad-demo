@@ -42,7 +42,7 @@ def post_route():
         data = request.data.decode()
         print(colored('1;95', data))
         jdata = json.loads(data)
-        astr  = demo.predict(jdata['paragraph'], jdata['question'])
+        astr  = demo.predict(jdata['paragraph'], jdata['question'], jdata['id'])
         print(colored('1;96', astr))
         return jsonify({'result': astr})
     except Exception as e:

@@ -14,8 +14,8 @@ var app = new Vue({
     partext: "",
     qustext: "",
 
-    anstext: "",
     restext: "",
+    anslist: [],
 
     loading: false
   },
@@ -30,47 +30,37 @@ var app = new Vue({
 
   methods: {
 
-    partextHighlight() {
-      var anstext = escapeRegExp(this.anstext);
-      var restext = escapeRegExp(this.restext);
+    partextHighlight(restext, bg) {
+      var restext_ = escapeRegExp(restext);
       var partext_ = this.partext;
 
-      if ( anstext && anstext == restext ) {
-        var re = new RegExp(`(\\b|\\s|^)(${anstext})(\\b|\\s|$)`, "giu");
-        var partext_ = partext_.replace(re, "$1<span class=\"highlight bg-primary\">$2</span>$3");
-      } else {
-        if ( anstext ) {
-          var re = new RegExp(`(\\b|\\s|^)(${anstext})(\\b|\\s|$)`, "giu");
-          var partext_ = partext_.replace(re, "$1<span class=\"highlight bg-success\">$2</span>$3");
-        }
-
-        if ( restext ) {
-          var re = new RegExp(`(\\b|\\s|^)(${restext})(\\b|\\s|$)`, "giu");
-          var partext_ = partext_.replace(re, "$1<span class=\"highlight bg-warning\">$2</span>$3");
-        }
+      if ( restext_ ) {
+        var re = new RegExp(`(${restext_})`, "giu");
+        var partext_ = partext_.replace(re, `<span class=\"highlight ${bg}\">$1</span>`);
       }
 
       return partext_ + '\n.';
     },
 
-    selectQuestion(qtext, atext) {
+    selectQuestion(qtext, alist, id) {
       this.qustext = qtext;
-      this.anstext = atext;
-      this.submitQuestionCore();
+      this.anslist = alist;
+      this.submitQuestionCore(id);
     },
 
     submitQuestion() {
-      this.anstext = "";
-      this.submitQuestionCore();
+      this.anslist = [];
+      this.submitQuestionCore(null);
     },
 
-    submitQuestionCore() {
+    submitQuestionCore(id) {
       this.loading = true;
       this.restext = "";
 
       const data = {
         paragraph: this.partext,
-        question:  this.qustext
+        question:  this.qustext,
+        id:        id
       };
 
       this.$http.post("/post", data, {
@@ -93,8 +83,8 @@ var app = new Vue({
     },
 
     clearAnswer() {
-      this.anstext = "";
       this.restext = "";
+      this.anslist = [];
     }
 
   }

@@ -68,8 +68,10 @@
 
               <small class="form-text text-muted">or write your own paragraph:</small>
               <div class="position-relative">
+                <div v-for="anstext in anslist" v-html="partextHighlight(anstext, 'bg-success')" class="form-control fake-textarea no-select text-transparent border-transparent bg-transparent h-100 position-absolute"></div>
+                <div v-html="partextHighlight(restext, 'bg-warning')" class="form-control fake-textarea no-select text-transparent border-transparent bg-transparent h-100 position-absolute"></div>
                 <textarea ref="pararea" v-model="partext" class="form-control no-resize bg-transparent h-100 position-absolute" placeholder="The Paragraph" style="top: 0; -1;" :disabled="loading"></textarea>
-                <div v-html="partextHighlight()" class="form-control fake-textarea no-select text-transparent border-transparent h-auto" :readonly="loading"></div>
+                <div v-html="partext" class="form-control fake-textarea no-select text-transparent border-transparent h-auto" :readonly="loading"></div>
               </div>
 
             </div>
@@ -87,7 +89,7 @@
               <small class="form-text text-muted">Select an question:</small>
               <div class="mb--1">
                 <template v-for="item in qalist">
-                  <button class="btn btn-sm btn-outline-secondary mb-1" type="submit" :disabled="loading" @click="selectQuestion(item[0], item[1])" v-text="item[0]"></button>${" "}
+                  <button class="btn btn-sm btn-outline-secondary mb-1" type="submit" :disabled="loading" @click="selectQuestion(item[0], item[1], item[2])" v-text="item[0]"></button><br><!-- ${" "} -->
                 </template>
               </div>
 
@@ -109,11 +111,11 @@
                 <h2>Answer</h2>
               </header>
 
-              <small class="form-text text-success">Ground truth:</small>
-              <input v-model="anstext" class="form-control bg-light" placeholder="The Ground Truth" disabled></input>
-
               <small class="form-text text-warning">Generated answer:</small>
               <input v-model="restext" class="form-control bg-light" placeholder="The Generated Answer" disabled></input>
+
+              <small class="form-text text-success">Ground truth:</small>
+              <input v-for="anstext in anslist" v-model="anstext" class="form-control bg-light mb-1" placeholder="The Ground Truth" disabled></input>
 
             </div>
 

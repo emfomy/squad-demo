@@ -1,6 +1,6 @@
 {
-    "name": "SQuAD Demo",
-    "short_name": "SelfQA",
+    "name": "BERT DRCD Demo",
+    "short_name": "BERT-DRCD",
     "icons": [
         {
             "src": "/static/favicon/android-chrome-192x192.png",

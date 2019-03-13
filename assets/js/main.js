@@ -63,7 +63,7 @@ var app = new Vue({
         id:        id
       };
 
-      this.$http.post("/post", data, {
+      this.$http.post("./post", data, {
         timeout: 60000
       }).then(
         res => {
